@@ -410,9 +410,7 @@ show_menu() {
 ————————————————
  ${green}12.${plain} 设置 v2-ui 开机自启
  ${green}13.${plain} 取消 v2-ui 开机自启
-————————————————
- ${green}14.${plain} 一键安装 bbr (最新内核)
- ${green}15.${plain} 更新 v2ray
+ 
  "
     show_status
     echo && read -p "请输入选择 [0-14]: " num
