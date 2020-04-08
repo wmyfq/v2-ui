@@ -142,9 +142,6 @@ uninstall() {
     echo ""
     echo -e "卸载成功，如果你想删除此脚本，则退出脚本后运行 ${green}rm /usr/bin/v2-ui -f${plain} 进行删除"
     echo ""
-    echo -e "Telegram 群组: ${green}https://t.me/sprov_blog${plain}"
-    echo -e "Github issues: ${green}https://github.com/sprov065/v2-ui/issues${plain}"
-    echo -e "博客: ${green}https://blog.sprov.xyz/v2-ui${plain}"
 
     if [[ $# == 0 ]]; then
         before_show_menu
@@ -299,32 +296,6 @@ install_bbr() {
     before_show_menu
 }
 
-update_shell() {
-    wget -O /usr/bin/v2-ui -N --no-check-certificate https://github.com/sprov065/v2-ui/raw/master/v2-ui.sh
-    if [[ $? != 0 ]]; then
-        echo ""
-        echo -e "${red}下载脚本失败，请检查本机能否连接 Github${plain}"
-        before_show_menu
-    else
-        chmod +x /usr/bin/v2-ui
-        echo -e "${green}升级脚本成功，请重新运行脚本${plain}" && exit 0
-    fi
-}
-
-update_v2ray() {
-    bash <(curl -L -s https://install.direct/go.sh)
-    if [[ $? != 0 ]]; then
-        echo ""
-        echo -e "${red}更新 v2ray 失败，请自行检查错误信息${plain}"
-        echo ""
-    else
-        echo ""
-        echo -e "${green}更新 v2ray 成功${plain}"
-        echo ""
-    fi
-    before_show_menu
-}
-
 # 0: running, 1: not running, 2: not installed
 check_status() {
     if [[ ! -f /etc/systemd/system/v2-ui.service ]]; then
@@ -474,10 +445,6 @@ show_menu() {
         12) check_install && enable
         ;;
         13) check_install && disable
-        ;;
-        14) install_bbr
-        ;;
-        15) update_v2ray
         ;;
         *) echo -e "${red}请输入正确的数字 [0-15]${plain}"
         ;;
